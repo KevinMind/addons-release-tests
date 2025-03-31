@@ -114,6 +114,7 @@ jobs:
         done
 
         echo "variables=$variables" >> "$GITHUB_OUTPUT"
+        cat "$GITHUB_OUTPUT"
 
     - name: Run tests
       timeout-minutes: 30
