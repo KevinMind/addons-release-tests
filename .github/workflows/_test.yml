@@ -92,10 +92,9 @@ jobs:
       run: python -m pip install --no-deps -r ./requirements.txt
 
     - name: Install geckodriver and Firefox
-      shell: bash
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y firefox-geckodriver
+      uses: browser-actions/setup-firefox@v1
+      with:
+        firefox-version: nightly
 
     - name: Install Setup Tools
       run: pip install setuptools
