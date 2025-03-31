@@ -94,7 +94,14 @@ jobs:
     - name: Install geckodriver and Firefox
       uses: browser-actions/setup-firefox@v1
       with:
-        firefox-version: nightly
+        firefox-version: latest
+
+    - name: Verify Firefox Installation
+      shell: bash
+      run: |
+        echo Installed Firefox version:
+        which firefox
+        firefox --version
 
     - name: Install Setup Tools
       run: pip install setuptools
