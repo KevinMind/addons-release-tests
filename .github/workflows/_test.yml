@@ -129,7 +129,9 @@ jobs:
           --driver Firefox \
           ${{ steps.test_context.outputs.variables }} \
           --html=${{ inputs.pytest_report }} \
-          --self-contained-html
+          --self-contained-html \
+          -vs \
+          --tb=short
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
