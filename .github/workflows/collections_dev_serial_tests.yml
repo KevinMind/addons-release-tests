@@ -14,4 +14,4 @@ jobs:
       pytest_report: collections-dev-test-results.html
       pytest_reruns: 2
       pytest_variables: dev.json
-      python_version: 3.x
+

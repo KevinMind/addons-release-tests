@@ -15,4 +15,4 @@ jobs:
       pytest_report: sanity-serial-test-results.html
       pytest_reruns: 2
       pytest_variables: prod.json
-      python_version: 3.x
+

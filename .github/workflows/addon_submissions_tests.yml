@@ -15,4 +15,3 @@ jobs:
       pytest_report: submissions-test-results.html
       pytest_reruns: 2
       pytest_variables: stage.json
-      python_version: 3.x

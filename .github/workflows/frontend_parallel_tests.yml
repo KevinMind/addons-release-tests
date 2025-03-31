@@ -15,4 +15,4 @@ jobs:
       pytest_report: frontend-parallel-test-results.html
       pytest_reruns: 2
       pytest_variables: stage.json,translations.json
-      python_version: 3.x
+

@@ -15,4 +15,4 @@ jobs:
       pytest_report: devhub-dev-parallel-test-results.html
       pytest_reruns: 2
       pytest_variables: dev.json
-      python_version: 3.x
+

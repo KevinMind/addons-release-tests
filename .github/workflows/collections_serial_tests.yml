@@ -14,4 +14,4 @@ jobs:
       pytest_report: collections-test-results.html
       pytest_reruns: 2
       pytest_variables: stage.json
-      python_version: 3.x
+
