@@ -3,10 +3,10 @@ name: Commit Workflow
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   frontend_parallel:
