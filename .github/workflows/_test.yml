@@ -86,16 +86,8 @@ jobs:
         cache: 'pip'
         cache-dependency-path: ./requirements.txt
 
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
-
     - name: Install requirements
-      run: python -m pip install --no-deps -r ./requirements.txt
-
-    - name: Debug pip cache
-      run: |
-        echo "Pip cache dir: $(python -m pip cache dir)"
-        ls -l "$(python -m pip cache dir)"
+      run: pip install --no-deps -r ./requirements.txt
 
     - name: Install geckodriver and Firefox
       uses: browser-actions/setup-firefox@v1
@@ -112,30 +104,29 @@ jobs:
     - name: Install Setup Tools
       run: pip install setuptools
 
-    - name: Debug test location
+    - name: Test context
+      id: test_context
       shell: bash
       run: |
-        pwd
-        ls -la
+        IFS=',' read -ra items <<< "$input"
+        variables=""
+        for item in "${items[@]}"; do
+          variables+="--variables $item "
+
+        echo "variables=$variables" >> "$GITHUB_OUTPUT"
+
     - name: Run tests
       timeout-minutes: 30
       shell: bash
       env:
         MOZ_HEADLESS: 1
       run: |
-        IFS=',' read -ra items <<< "$input"
-        variables=""
-        for item in "${items[@]}"; do
-          variables+="--variables $item "
-        done
-
-
         python -m pytest ${{ inputs.pytest_path }} \
           -n ${{ inputs.pytest_parallel }} \
           -m "${{ inputs.pytest_marker }}" \
           --reruns ${{ inputs.pytest_reruns }} \
           --driver Firefox \
-          $variables \
+          ${{ steps.test_context.outputs.variables }} \
           --html=${{ inputs.pytest_report }} \
           --self-contained-html
 
