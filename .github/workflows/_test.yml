@@ -107,7 +107,7 @@ jobs:
       id: test_context
       shell: bash
       run: |
-        IFS=',' read -ra items <<< "$input"
+        IFS=',' read -ra items <<< "${{ inputs.pytest_variables }}"
         variables=""
         for item in "${items[@]}"; do
           variables+="--variables $item "
