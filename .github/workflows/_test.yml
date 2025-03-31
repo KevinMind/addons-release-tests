@@ -112,10 +112,12 @@ jobs:
       env:
         MOZ_HEADLESS: 1
       run: |
+        IFS=',' read -ra items <<< "$input"
         variables=""
-        for var in ${inputs.pytest_variables//,/ }; do
-          variables="$variables --variables $var"
+        for item in "${items[@]}"; do
+          variables+="--variables $item "
         done
+
 
         python -m pytest ${{ inputs.pytest_path }} \
           -n ${{ inputs.pytest_parallel }} \
