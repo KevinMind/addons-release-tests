@@ -82,7 +82,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ github.event.inputs.python_version }}
+        python-version: ${{ inputs.python_version }}
         cache: 'pip'
 
     - name: Upgrade pip
