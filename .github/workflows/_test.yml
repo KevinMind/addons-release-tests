@@ -132,7 +132,7 @@ jobs:
 
         python -m pytest ${{ inputs.pytest_path }} \
           -n ${{ inputs.pytest_parallel }} \
-          -m ${{ inputs.pytest_marker }} \
+          -m "${{ inputs.pytest_marker }}" \
           --reruns ${{ inputs.pytest_reruns }} \
           --driver Firefox \
           $variables \
