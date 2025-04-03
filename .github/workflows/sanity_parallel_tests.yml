@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/_test.yml
+    secrets: inherit
     with:
       artifact_name: sanity-parallel-test-results
       pytest_marker: "prod_only or sanity and not serial"

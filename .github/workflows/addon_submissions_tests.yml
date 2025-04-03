@@ -7,6 +7,7 @@ on:
 jobs:
   test:
     uses: ./.github/workflows/_test.yml
+    secrets: inherit
     # TODO: install typeguard
     with:
       artifact_name: submissions-test-results
